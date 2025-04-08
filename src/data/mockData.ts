@@ -6,6 +6,10 @@ export const fleetOverviewData = {
   activeBuses: 18,
   inMaintenance: 4,
   charging: 3,
+  busTypes: {
+    ac: 15,
+    nonAc: 10
+  }
 };
 
 export const energyMetrics = {
@@ -24,7 +28,11 @@ export const busesData = [
     status: "on-route" as const, 
     batteryLevel: 68, 
     estimatedRange: 145,
-    energyEfficiency: { value: 0.85, trend: "down" as const } 
+    energyEfficiency: { value: 0.85, trend: "down" as const },
+    type: "ac" as const,
+    model: "Eco City 12m",
+    capacity: 42,
+    yearManufactured: 2022
   },
   { 
     id: "BLR-EB-002", 
@@ -34,7 +42,11 @@ export const busesData = [
     status: "on-route" as const, 
     batteryLevel: 45, 
     estimatedRange: 98,
-    energyEfficiency: { value: 0.92, trend: "up" as const } 
+    energyEfficiency: { value: 0.92, trend: "up" as const },
+    type: "ac" as const,
+    model: "Eco City 12m",
+    capacity: 42,
+    yearManufactured: 2022
   },
   { 
     id: "BLR-EB-003", 
@@ -44,7 +56,11 @@ export const busesData = [
     status: "charging" as const, 
     batteryLevel: 32, 
     estimatedRange: 74,
-    energyEfficiency: { value: 0.88, trend: "stable" as const } 
+    energyEfficiency: { value: 0.88, trend: "stable" as const },
+    type: "ac" as const,
+    model: "Eco City 10m",
+    capacity: 38,
+    yearManufactured: 2021
   },
   { 
     id: "BLR-EB-004", 
@@ -54,7 +70,11 @@ export const busesData = [
     status: "maintenance" as const, 
     batteryLevel: 15, 
     estimatedRange: 35,
-    energyEfficiency: { value: 1.05, trend: "up" as const } 
+    energyEfficiency: { value: 1.05, trend: "up" as const },
+    type: "non-ac" as const,
+    model: "Eco Mini 8m",
+    capacity: 32,
+    yearManufactured: 2021
   },
   { 
     id: "BLR-EB-005", 
@@ -64,7 +84,11 @@ export const busesData = [
     status: "idle" as const, 
     batteryLevel: 94, 
     estimatedRange: 210,
-    energyEfficiency: { value: 0.78, trend: "down" as const } 
+    energyEfficiency: { value: 0.78, trend: "down" as const },
+    type: "non-ac" as const,
+    model: "Eco Mini 8m",
+    capacity: 32,
+    yearManufactured: 2023
   },
 ];
 

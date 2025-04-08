@@ -19,6 +19,7 @@ interface BusData {
   driver: string;
   status: 'on-route' | 'charging' | 'maintenance' | 'idle';
   batteryLevel: number;
+  estimatedRange?: number;
   energyEfficiency: {
     value: number;
     trend: 'up' | 'down' | 'stable';

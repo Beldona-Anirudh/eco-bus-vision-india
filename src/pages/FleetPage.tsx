@@ -11,6 +11,7 @@ const FleetPage = () => {
   const chargingBuses = busesData.filter(bus => bus.status === 'charging').length;
   const maintenanceBuses = busesData.filter(bus => bus.status === 'maintenance').length;
   const activeBuses = busesData.filter(bus => bus.status === 'on-route').length;
+  const idleBuses = busesData.filter(bus => bus.status === 'idle').length;
 
   return (
     <DashboardLayout>
@@ -22,9 +23,9 @@ const FleetPage = () => {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-6">
         <FleetSummary 
           totalBuses={fleetOverviewData.totalBuses}
-          activeBuses={fleetOverviewData.activeBuses}
-          chargingBuses={fleetOverviewData.charging}
-          maintenanceBuses={fleetOverviewData.inMaintenance}
+          activeBuses={activeBuses}
+          chargingBuses={chargingBuses}
+          maintenanceBuses={maintenanceBuses}
           acBuses={fleetOverviewData.busTypes.ac}
           nonAcBuses={fleetOverviewData.busTypes.nonAc}
         />
