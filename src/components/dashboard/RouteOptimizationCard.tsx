@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Route, Traffic, CloudRain, Clock } from 'lucide-react';
+import { Route, CloudRain, Clock, CircleAlert } from 'lucide-react';
 
 interface RouteFactorProps {
   icon: React.ReactNode;
@@ -72,7 +72,7 @@ export const RouteOptimizationCard: React.FC<RouteOptimizationCardProps> = ({
             trend="up"
           />
           <RouteFactor 
-            icon={<TrafficCone className="h-5 w-5 text-orange-500" />}
+            icon={<CircleAlert className="h-5 w-5 text-orange-500" />}
             label="Traffic Level"
             value={trafficLevel}
             impact={trafficImpact}
@@ -102,4 +102,3 @@ export const RouteOptimizationCard: React.FC<RouteOptimizationCardProps> = ({
     </Card>
   );
 };
-
