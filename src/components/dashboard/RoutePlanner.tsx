@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { Clock, Route, TrafficCone, CloudRain } from "lucide-react";
+import { Clock, Route, CloudRain } from "lucide-react";
 import { busesData } from "../../data/mockData";
 
 // Weather impact on routes
@@ -139,7 +139,7 @@ export const RoutePlanner: React.FC = () => {
                     <SelectValue placeholder="Select a bus" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="">All Buses</SelectItem>
+                    <SelectItem value="all-buses">All Buses</SelectItem>
                     {busesData.map(bus => (
                       <SelectItem key={bus.id} value={bus.id}>
                         {bus.name} ({bus.type === 'ac' ? 'AC' : 'Non-AC'})
@@ -289,4 +289,3 @@ export const RoutePlanner: React.FC = () => {
     </div>
   );
 };
-
