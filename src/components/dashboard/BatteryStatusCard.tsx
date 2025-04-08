@@ -66,13 +66,13 @@ export const BatteryStatusCard: React.FC<BatteryStatusCardProps> = ({ buses }) =
                 </div>
                 <Progress 
                   value={bus.batteryLevel} 
-                  className={`h-2 ${
+                  className={
                     bus.batteryLevel < 20 
                       ? 'bg-eco-orange-100' 
                       : bus.status === 'charging' 
                         ? 'bg-eco-green-100' 
                         : 'bg-eco-blue-100'
-                  }`}
+                  }
                   indicatorClassName={
                     bus.batteryLevel < 20 
                       ? 'bg-eco-orange-500' 
