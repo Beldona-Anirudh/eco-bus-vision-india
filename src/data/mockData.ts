@@ -1,4 +1,3 @@
-
 // This file contains mock data for our dashboard
 // In a real application, this would come from an API
 
@@ -75,28 +74,32 @@ export const batteryStatusData = [
     name: "eBus 001", 
     batteryLevel: 68, 
     status: "discharging" as const, 
-    estimatedRange: 145 
+    estimatedRange: 145,
+    type: "ac" as const
   },
   { 
     id: "BLR-EB-003", 
     name: "eBus 003", 
     batteryLevel: 32, 
     status: "charging" as const, 
-    estimatedRange: 74 
+    estimatedRange: 74,
+    type: "ac" as const
   },
   { 
     id: "BLR-EB-004", 
     name: "eBus 004", 
     batteryLevel: 15, 
     status: "idle" as const, 
-    estimatedRange: 35 
+    estimatedRange: 35,
+    type: "non-ac" as const
   },
   { 
     id: "BLR-EB-005", 
     name: "eBus 005", 
     batteryLevel: 94, 
     status: "idle" as const, 
-    estimatedRange: 210 
+    estimatedRange: 210,
+    type: "non-ac" as const
   },
 ];
 

@@ -2,7 +2,7 @@
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { ArrowUp, ArrowDown } from 'lucide-react';
+import { ArrowUp, ArrowDown, AirVent, ThermometerSnowflake } from 'lucide-react';
 import {
   Table,
   TableBody,
@@ -22,6 +22,7 @@ interface BusData {
     value: number;
     trend: 'up' | 'down' | 'stable';
   };
+  type?: 'ac' | 'non-ac';
 }
 
 interface FleetStatusTableProps {
@@ -49,6 +50,7 @@ export const FleetStatusTable: React.FC<FleetStatusTableProps> = ({ buses }) => 
           <TableHeader>
             <TableRow>
               <TableHead>Bus ID</TableHead>
+              {buses[0].type && <TableHead>Type</TableHead>}
               <TableHead>Route</TableHead>
               <TableHead>Driver</TableHead>
               <TableHead>Status</TableHead>
@@ -60,6 +62,23 @@ export const FleetStatusTable: React.FC<FleetStatusTableProps> = ({ buses }) => 
             {buses.map((bus) => (
               <TableRow key={bus.id}>
                 <TableCell className="font-medium">{bus.id}</TableCell>
+                {bus.type && (
+                  <TableCell>
+                    <div className="flex items-center space-x-1">
+                      {bus.type === 'ac' ? (
+                        <>
+                          <AirVent className="h-4 w-4 text-eco-blue-600" />
+                          <span>AC</span>
+                        </>
+                      ) : (
+                        <>
+                          <ThermometerSnowflake className="h-4 w-4 text-eco-green-600" />
+                          <span>Non-AC</span>
+                        </>
+                      )}
+                    </div>
+                  </TableCell>
+                )}
                 <TableCell>{bus.route}</TableCell>
                 <TableCell>{bus.driver}</TableCell>
                 <TableCell>

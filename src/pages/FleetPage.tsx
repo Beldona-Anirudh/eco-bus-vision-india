@@ -1,8 +1,17 @@
 
 import React from 'react';
 import { DashboardLayout } from '../components/layout/DashboardLayout';
+import { FleetSummary } from '../components/dashboard/FleetSummary';
+import { BusTypeDistribution } from '../components/dashboard/BusTypeDistribution';
+import { DetailedFleetTable } from '../components/dashboard/DetailedFleetTable';
+import { fleetOverviewData, busesData } from '../data/mockData';
 
 const FleetPage = () => {
+  // Calculate number of buses in each status
+  const chargingBuses = busesData.filter(bus => bus.status === 'charging').length;
+  const maintenanceBuses = busesData.filter(bus => bus.status === 'maintenance').length;
+  const activeBuses = busesData.filter(bus => bus.status === 'on-route').length;
+
   return (
     <DashboardLayout>
       <div className="mb-6">
@@ -10,9 +19,23 @@ const FleetPage = () => {
         <p className="text-muted-foreground">Manage and monitor your entire bus fleet.</p>
       </div>
       
-      <div className="rounded-lg border border-dashed border-gray-300 p-8 text-center">
-        <h2 className="text-xl font-medium text-gray-600">Fleet Management Page</h2>
-        <p className="mt-2 text-gray-500">This page will contain detailed fleet information and management tools.</p>
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-6">
+        <FleetSummary 
+          totalBuses={fleetOverviewData.totalBuses}
+          activeBuses={fleetOverviewData.activeBuses}
+          chargingBuses={fleetOverviewData.charging}
+          maintenanceBuses={fleetOverviewData.inMaintenance}
+          acBuses={fleetOverviewData.busTypes.ac}
+          nonAcBuses={fleetOverviewData.busTypes.nonAc}
+        />
+        <BusTypeDistribution 
+          acBuses={fleetOverviewData.busTypes.ac}
+          nonAcBuses={fleetOverviewData.busTypes.nonAc}
+        />
+      </div>
+
+      <div className="mb-6">
+        <DetailedFleetTable buses={busesData} />
       </div>
     </DashboardLayout>
   );

@@ -2,7 +2,7 @@
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { BatteryFull, BatteryLow, BatteryCharging } from 'lucide-react';
+import { BatteryFull, BatteryLow, BatteryCharging, AirVent, ThermometerSnowflake } from 'lucide-react';
 import { Progress } from "@/components/ui/progress";
 
 interface BusData {
@@ -11,6 +11,7 @@ interface BusData {
   batteryLevel: number;
   status: 'charging' | 'discharging' | 'idle';
   estimatedRange: number;
+  type?: 'ac' | 'non-ac';
 }
 
 interface BatteryStatusCardProps {
@@ -50,6 +51,15 @@ export const BatteryStatusCard: React.FC<BatteryStatusCardProps> = ({ buses }) =
                 <div className="flex items-center space-x-2">
                   {getBatteryIcon(bus)}
                   <span className="font-medium">{bus.name}</span>
+                  {bus.type && (
+                    <div className="ml-1">
+                      {bus.type === 'ac' ? (
+                        <AirVent className="h-3 w-3 text-eco-blue-500" />
+                      ) : (
+                        <ThermometerSnowflake className="h-3 w-3 text-eco-green-500" />
+                      )}
+                    </div>
+                  )}
                 </div>
                 <Badge 
                   variant="outline" 
