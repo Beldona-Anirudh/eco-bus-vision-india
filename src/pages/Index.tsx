@@ -7,6 +7,8 @@ import { BatteryStatusCard } from '../components/dashboard/BatteryStatusCard';
 import { EnergyUsageChart } from '../components/dashboard/EnergyUsageChart';
 import { WeatherImpactCard } from '../components/dashboard/WeatherImpactCard';
 import { FleetStatusTable } from '../components/dashboard/FleetStatusTable';
+import { RoutePlanner } from '../components/dashboard/RoutePlanner';
+import { RouteOptimizationCard } from '../components/dashboard/RouteOptimizationCard';
 import { Bus, BarChart, BatteryFull, BatteryCharging } from 'lucide-react';
 
 import { 
@@ -65,6 +67,25 @@ const Index = () => {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-6">
         <EnergyUsageChart data={energyUsageData} />
         <FleetStatusTable buses={busesData} />
+      </div>
+
+      <div className="mb-6">
+        <h2 className="text-xl font-bold tracking-tight mb-4">Route Planning and Optimization</h2>
+        <div className="grid grid-cols-1 gap-4">
+          <RoutePlanner />
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-6">
+        <RouteOptimizationCard 
+          weatherCondition="Rainy"
+          weatherImpact="+15% time"
+          trafficLevel="Moderate"
+          trafficImpact="+10% time"
+          timeOfDay="Normal Hours"
+          timeImpact="No impact"
+          distanceImpact="-5% energy"
+        />
       </div>
     </DashboardLayout>
   );
