@@ -1,4 +1,3 @@
-
 // This file contains mock data for our dashboard
 // In a real application, this would come from an API
 
@@ -91,7 +90,6 @@ export const busesData = [
     capacity: 32,
     yearManufactured: 2023
   },
-  // Adding more buses to bring the total to 25
   { 
     id: "BLR-EB-006", 
     name: "eBus 006",
@@ -470,3 +468,117 @@ export const routeOptimizationData = {
   }
 };
 
+export const routeDetails = [
+  {
+    id: "Route 117",
+    name: "Dadar - Andheri Express",
+    startLocation: "Dadar Bus Terminal",
+    endLocation: "Andheri Station East",
+    distance: 15.8,
+    minTravelTime: 45,
+    maxTravelTime: 75,
+    stops: ["Dadar", "Mahim", "Bandra", "Khar", "Santacruz", "Vile Parle", "Andheri"],
+    popularity: 85, // percentage of capacity typically used
+    peakHours: ["7:00 AM - 10:00 AM", "5:00 PM - 8:00 PM"],
+    avgPassengersPerTrip: 36,
+    busesOnRoute: ["BLR-EB-003", "BLR-EB-012"]
+  },
+  {
+    id: "Route 118",
+    name: "South Mumbai Connector",
+    startLocation: "Colaba Bus Depot",
+    endLocation: "Lower Parel",
+    distance: 12.3,
+    minTravelTime: 35,
+    maxTravelTime: 65,
+    stops: ["Colaba", "Churchgate", "Marine Lines", "Charni Road", "Grant Road", "Mumbai Central", "Lower Parel"],
+    popularity: 78,
+    peakHours: ["8:00 AM - 11:00 AM", "6:00 PM - 9:00 PM"],
+    avgPassengersPerTrip: 34,
+    busesOnRoute: ["BLR-EB-006", "BLR-EB-010", "BLR-EB-016", "BLR-EB-025"]
+  },
+  {
+    id: "Route 221",
+    name: "Airport Express",
+    startLocation: "International Airport T2",
+    endLocation: "Nariman Point",
+    distance: 24.5,
+    minTravelTime: 60,
+    maxTravelTime: 90,
+    stops: ["Airport T2", "Vile Parle", "Santacruz", "Bandra", "Worli", "Haji Ali", "Nariman Point"],
+    popularity: 92,
+    peakHours: ["5:00 AM - 9:00 AM", "7:00 PM - 11:00 PM"],
+    avgPassengersPerTrip: 38,
+    busesOnRoute: ["BLR-EB-001", "BLR-EB-005", "BLR-EB-011", "BLR-EB-020"]
+  },
+  {
+    id: "Route 301",
+    name: "East-West Connector",
+    startLocation: "Kurla Station",
+    endLocation: "Andheri West",
+    distance: 13.7,
+    minTravelTime: 40,
+    maxTravelTime: 70,
+    stops: ["Kurla", "BKC", "Dharavi", "Bandra East", "Bandra West", "Khar", "Andheri West"],
+    popularity: 75,
+    peakHours: ["7:30 AM - 10:30 AM", "5:30 PM - 8:30 PM"],
+    avgPassengersPerTrip: 30,
+    busesOnRoute: ["BLR-EB-007", "BLR-EB-017"]
+  },
+  {
+    id: "Route 335",
+    name: "Suburban Link",
+    startLocation: "Thane Station",
+    endLocation: "Borivali",
+    distance: 32.1,
+    minTravelTime: 70,
+    maxTravelTime: 120,
+    stops: ["Thane", "Mulund", "Bhandup", "Kanjurmarg", "Powai", "Goregaon", "Borivali"],
+    popularity: 83,
+    peakHours: ["6:30 AM - 9:30 AM", "5:00 PM - 8:00 PM"],
+    avgPassengersPerTrip: 35,
+    busesOnRoute: ["BLR-EB-002", "BLR-EB-013", "BLR-EB-022"]
+  },
+  {
+    id: "Route 402",
+    name: "Eastern Express",
+    startLocation: "Chembur",
+    endLocation: "CSMT",
+    distance: 19.5,
+    minTravelTime: 50,
+    maxTravelTime: 85,
+    stops: ["Chembur", "Sion", "Matunga", "Dadar", "Parel", "Byculla", "CSMT"],
+    popularity: 80,
+    peakHours: ["8:00 AM - 11:00 AM", "6:00 PM - 9:00 PM"],
+    avgPassengersPerTrip: 33,
+    busesOnRoute: ["BLR-EB-008", "BLR-EB-018"]
+  },
+  {
+    id: "Route 442",
+    name: "Western Express",
+    startLocation: "Borivali",
+    endLocation: "Churchgate",
+    distance: 36.8,
+    minTravelTime: 80,
+    maxTravelTime: 130,
+    stops: ["Borivali", "Kandivali", "Malad", "Goregaon", "Andheri", "Bandra", "Dadar", "Churchgate"],
+    popularity: 87,
+    peakHours: ["7:00 AM - 10:00 AM", "6:00 PM - 9:00 PM"],
+    avgPassengersPerTrip: 37,
+    busesOnRoute: ["BLR-EB-004", "BLR-EB-014", "BLR-EB-023"]
+  },
+  {
+    id: "Route 501",
+    name: "Navi Mumbai Connector",
+    startLocation: "Vashi",
+    endLocation: "Belapur CBD",
+    distance: 14.2,
+    minTravelTime: 30,
+    maxTravelTime: 60,
+    stops: ["Vashi", "Sanpada", "Juinagar", "Nerul", "Seawoods", "Belapur CBD"],
+    popularity: 72,
+    peakHours: ["8:30 AM - 11:30 AM", "5:30 PM - 8:30 PM"],
+    avgPassengersPerTrip: 29,
+    busesOnRoute: ["BLR-EB-009", "BLR-EB-015", "BLR-EB-019", "BLR-EB-024"]
+  }
+];
