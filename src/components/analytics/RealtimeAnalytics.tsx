@@ -3,9 +3,22 @@ import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { useRealTimeData } from '@/hooks/useRealTimeData';
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import { AlertCircle } from "lucide-react";
 
 export const RealtimeAnalytics: React.FC = () => {
-  const { realtimeData, averageSpeed, busUtilization, energyEfficiency } = useRealTimeData();
+  const { realtimeData, averageSpeed, busUtilization, energyEfficiency, isError } = useRealTimeData();
+
+  if (isError) {
+    return (
+      <Alert variant="destructive" className="mb-6">
+        <AlertCircle className="h-4 w-4" />
+        <AlertDescription>
+          Failed to fetch transit data. Please try again later.
+        </AlertDescription>
+      </Alert>
+    );
+  }
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-6">
