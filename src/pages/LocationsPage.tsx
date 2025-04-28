@@ -3,7 +3,7 @@ import React from 'react';
 import { DashboardLayout } from '../components/layout/DashboardLayout';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { MapPin, Route, Bus } from "lucide-react";
+import { MapPin, Route, Bus, Map } from "lucide-react";
 import { useNavigate } from 'react-router-dom';
 import { routeDetails } from '../data/mockData';
 
@@ -63,15 +63,30 @@ const LocationsPage = () => {
         </Card>
       </div>
       
-      <Card>
-        <CardHeader className="pb-2">
-          <CardTitle className="text-lg font-medium">Route Locations</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <p className="mb-4">View detailed information about all bus routes, including stops, distances, and travel times.</p>
-          <Button onClick={() => navigate('/route-locations')}>View Route Locations</Button>
-        </CardContent>
-      </Card>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+        <Card>
+          <CardHeader className="pb-2">
+            <CardTitle className="text-lg font-medium">Route Locations</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="mb-4">View detailed information about all bus routes, including stops, distances, and travel times.</p>
+            <Button onClick={() => navigate('/route-locations')}>View Route Locations</Button>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader className="pb-2">
+            <CardTitle className="text-lg font-medium">Live Bus Tracking</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="mb-4">Track the real-time locations of all active buses across the city.</p>
+            <Button onClick={() => navigate('/map')} className="flex items-center gap-2">
+              <Map className="h-4 w-4" />
+              View Live Map
+            </Button>
+          </CardContent>
+        </Card>
+      </div>
     </DashboardLayout>
   );
 };

@@ -9,7 +9,9 @@ import { WeatherImpactCard } from '../components/dashboard/WeatherImpactCard';
 import { FleetStatusTable } from '../components/dashboard/FleetStatusTable';
 import { RoutePlanner } from '../components/dashboard/RoutePlanner';
 import { RouteOptimizationCard } from '../components/dashboard/RouteOptimizationCard';
-import { Bus, BarChart, BatteryFull, BatteryCharging } from 'lucide-react';
+import { Bus, BarChart, BatteryFull, BatteryCharging, Map } from 'lucide-react';
+import { Button } from "@/components/ui/button";
+import { Link } from 'react-router-dom';
 
 import { 
   fleetOverviewData, 
@@ -57,7 +59,17 @@ const Index = () => {
       </div>
       
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-6">
-        <RouteMap />
+        <div className="lg:col-span-2 relative">
+          <RouteMap />
+          <div className="absolute top-4 right-4">
+            <Link to="/map">
+              <Button size="sm">
+                <Map className="h-4 w-4 mr-1" />
+                View Live Map
+              </Button>
+            </Link>
+          </div>
+        </div>
         <div className="grid grid-cols-1 gap-4">
           <BatteryStatusCard buses={batteryStatusData} />
           <WeatherImpactCard forecastData={weatherForecastData} />

@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -12,6 +13,7 @@ import BatteryPage from "./pages/BatteryPage";
 import LocationsPage from "./pages/LocationsPage";
 import RouteLocationsPage from "./pages/RouteLocationsPage";
 import SettingsPage from "./pages/SettingsPage";
+import MapPage from "./pages/MapPage";
 
 const queryClient = new QueryClient();
 
@@ -30,6 +32,7 @@ function App() {
             <Route path="/battery" element={<BatteryPage />} />
             <Route path="/locations" element={<LocationsPage />} />
             <Route path="/route-locations" element={<RouteLocationsPage />} />
+            <Route path="/map" element={<MapPage />} />
             <Route path="/settings" element={<SettingsPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
