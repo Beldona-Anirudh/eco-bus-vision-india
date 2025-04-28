@@ -2,9 +2,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { DashboardLayout } from '../components/layout/DashboardLayout';
 import { BusLocationMap } from '../components/maps/BusLocationMap';
+import { RealtimeAnalytics } from '../components/analytics/RealtimeAnalytics';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { MapPin, Route, Bus } from "lucide-react";
 import { busesData, routeDetails } from '../data/mockData';
@@ -53,7 +54,7 @@ const MapPage = () => {
             <CardTitle className="text-lg font-medium">Mapbox API Key Required</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="mb-4">To view the live map, you need to provide a valid Mapbox API key (public token).</p>
+            <p className="mb-4">To view the live map and analytics, you need to provide a valid Mapbox API key (public token).</p>
             <p className="mb-4 text-sm text-muted-foreground">
               You can get a free Mapbox token by signing up at <a href="https://mapbox.com" target="_blank" rel="noopener noreferrer" className="text-blue-500 underline">mapbox.com</a>
             </p>
@@ -65,6 +66,7 @@ const MapPage = () => {
         </Card>
       ) : (
         <>
+          <RealtimeAnalytics />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
             <Card>
               <CardHeader className="pb-2">
@@ -107,7 +109,6 @@ const MapPage = () => {
               </CardContent>
             </Card>
           </div>
-          
           <BusLocationMap mapboxToken={mapboxToken} />
         </>
       )}
