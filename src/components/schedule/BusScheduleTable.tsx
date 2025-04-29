@@ -4,7 +4,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Eye } from 'lucide-react';
-import { routeData } from '@/data/mockData';
+import { busesData, routeDetails } from '@/data/mockData';
 
 interface BusData {
   id: string;
@@ -52,7 +52,7 @@ export const BusScheduleTable: React.FC<BusScheduleTableProps> = ({
   
   // Generate route completion time
   const getRouteCompletionTime = (busId: string, routeId: string) => {
-    const route = routeData.find(r => r.id === routeId);
+    const route = routeDetails.find(r => r.id === routeId);
     
     if (!route) {
       return { time: '45-60', stops: 10 };
@@ -95,7 +95,7 @@ export const BusScheduleTable: React.FC<BusScheduleTableProps> = ({
         <TableBody>
           {buses.map((bus) => {
             const { startTime, endTime } = getScheduleTimes(bus.id);
-            const route = routeData.find(r => r.id === bus.route) || { id: "unknown", name: "Unknown" };
+            const route = routeDetails.find(r => r.id === bus.route) || { id: "unknown", name: "Unknown" };
             const routeInfo = getRouteCompletionTime(bus.id, bus.route);
             
             return (

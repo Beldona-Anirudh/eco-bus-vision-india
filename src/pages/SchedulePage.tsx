@@ -8,7 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Input } from "@/components/ui/input";
 import { Search, Calendar, Bus } from 'lucide-react';
-import { busesData, routeData } from '../data/mockData';
+import { busesData, routeDetails } from '../data/mockData';
 
 const SchedulePage = () => {
   const [selectedBus, setSelectedBus] = useState<string | null>(null);

@@ -3,7 +3,7 @@ import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { X, Clock, Route, MapPin } from 'lucide-react';
-import { busesData, routeData } from '@/data/mockData';
+import { busesData, routeDetails } from '@/data/mockData';
 
 interface BusRouteScheduleProps {
   busId: string;
@@ -12,7 +12,7 @@ interface BusRouteScheduleProps {
 
 export const BusRouteSchedule: React.FC<BusRouteScheduleProps> = ({ busId, onClose }) => {
   const bus = busesData.find(b => b.id === busId);
-  const route = routeData.find(r => r.id === bus?.route);
+  const route = routeDetails.find(r => r.id === bus?.route);
   
   if (!bus || !route) {
     return (
