@@ -5,7 +5,7 @@ import { RouteMap } from '../components/dashboard/RouteMap';
 import { RouteOptimizationCard } from '../components/dashboard/RouteOptimizationCard';
 import { RoutePlanner } from '../components/dashboard/RoutePlanner';
 import { WeatherImpactCard } from '../components/dashboard/WeatherImpactCard';
-import { weatherForecastData, routeData } from '../data/mockData';
+import { routeData } from '../data/mockData';
 
 const RoutesPage = () => {
   return (
@@ -25,7 +25,7 @@ const RoutesPage = () => {
           timeImpact="+20%"
           distanceImpact="-5%"
         />
-        <WeatherImpactCard forecastData={weatherForecastData} />
+        <WeatherImpactCard />
       </div>
 
       <div className="mb-6">
@@ -40,4 +40,3 @@ const RoutesPage = () => {
 };
 
 export default RoutesPage;
-
