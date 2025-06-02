@@ -9,25 +9,28 @@ import { WeatherImpactCard } from '../components/dashboard/WeatherImpactCard';
 import { FleetStatusTable } from '../components/dashboard/FleetStatusTable';
 import { RoutePlanner } from '../components/dashboard/RoutePlanner';
 import { RouteOptimizationCard } from '../components/dashboard/RouteOptimizationCard';
+import { ApiStatusCard } from '../components/dashboard/ApiStatusCard';
 import { Bus, BarChart, BatteryFull, BatteryCharging, Map } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Link } from 'react-router-dom';
+import { useBusStopsData } from '../hooks/useBusStopsData';
 
 import { 
   fleetOverviewData, 
   energyMetrics, 
   busesData, 
   batteryStatusData,
-  energyUsageData,
-  weatherForecastData
+  energyUsageData
 } from '../data/mockData';
 
 const Index = () => {
+  const { busStops, busRoutes, stopsCount, routesCount } = useBusStopsData();
+
   return (
     <DashboardLayout>
       <div className="mb-6">
         <h1 className="text-2xl font-bold tracking-tight">Dashboard</h1>
-        <p className="text-muted-foreground">Monitor and optimize your electric bus fleet in real-time.</p>
+        <p className="text-muted-foreground">Monitor and optimize your electric bus fleet with real-time data from multiple APIs.</p>
       </div>
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
@@ -45,16 +48,16 @@ const Index = () => {
           description="vs. last month"
         />
         <StatCard 
-          title="Average Battery Level" 
-          value="72%"
+          title="Live Bus Stops" 
+          value={stopsCount.toString()}
           icon={<BatteryFull className="h-5 w-5 text-eco-blue-600" />}
-          description="Across all buses"
+          description="From OpenStreetMap"
         />
         <StatCard 
-          title="Charging Stations" 
-          value="8/12 Available"
+          title="Active Routes" 
+          value={`${routesCount}/12 Available`}
           icon={<BatteryCharging className="h-5 w-5 text-eco-green-600" />}
-          description="4 stations in use"
+          description="Real transit data"
         />
       </div>
       
@@ -72,13 +75,14 @@ const Index = () => {
         </div>
         <div className="grid grid-cols-1 gap-4">
           <BatteryStatusCard buses={batteryStatusData} />
-          <WeatherImpactCard forecastData={weatherForecastData} />
+          <WeatherImpactCard />
         </div>
       </div>
       
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-6">
         <EnergyUsageChart data={energyUsageData} />
         <FleetStatusTable buses={busesData} />
+        <ApiStatusCard />
       </div>
 
       <div className="mb-6">
@@ -90,10 +94,10 @@ const Index = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-6">
         <RouteOptimizationCard 
-          weatherCondition="Rainy"
-          weatherImpact="+15% time"
-          trafficLevel="Moderate"
-          trafficImpact="+10% time"
+          weatherCondition="Live Data"
+          weatherImpact="API Connected"
+          trafficLevel="Real-time"
+          trafficImpact="OSM Data"
           timeOfDay="Normal Hours"
           timeImpact="No impact"
           distanceImpact="-5% energy"
