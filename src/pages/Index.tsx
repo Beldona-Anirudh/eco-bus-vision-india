@@ -10,7 +10,6 @@ import { FleetStatusTable } from '../components/dashboard/FleetStatusTable';
 import { RoutePlanner } from '../components/dashboard/RoutePlanner';
 import { RouteOptimizationCard } from '../components/dashboard/RouteOptimizationCard';
 import { ApiStatusCard } from '../components/dashboard/ApiStatusCard';
-import { LiveBusMap } from '../components/maps/LiveBusMap';
 import { Bus, BarChart, BatteryFull, BatteryCharging, Map, Users, Clock } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -22,9 +21,6 @@ import { energyUsageData } from '../data/mockData';
 const Index = () => {
   const { liveBusData, fleetStats, busStops, busRoutes, isLiveUpdating } = useLiveBusData();
   const { weatherData } = useWeatherData('Delhi');
-  
-  // Get Mapbox token for mini map
-  const mapboxToken = localStorage.getItem('mapbox_token');
 
   // Calculate additional metrics
   const totalPassengers = fleetStats.totalPassengers;
@@ -85,8 +81,8 @@ const Index = () => {
         />
       </div>
 
-      {/* Secondary KPI Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-6">
+      {/* Secondary KPI Cards - Only Active Routes and Energy Usage */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
         <StatCard 
           title="Active Routes" 
           value={`${routesCovered}/${busRoutes.length}`}
@@ -94,33 +90,9 @@ const Index = () => {
           description="Live coverage"
         />
         <StatCard 
-          title="Avg Battery" 
-          value={`${fleetStats.averageBatteryLevel.toFixed(1)}%`}
-          icon={<BatteryFull className="h-4 w-4 text-blue-600" />}
-          description="Fleet level"
-        />
-        <StatCard 
-          title="Avg Speed" 
-          value={`${fleetStats.averageSpeed.toFixed(1)} km/h`}
-          icon={<Clock className="h-4 w-4 text-orange-600" />}
-          description="Active buses"
-        />
-        <StatCard 
-          title="Maintenance" 
-          value={fleetStats.maintenanceBuses.toString()}
-          icon={<Bus className="h-4 w-4 text-red-600" />}
-          description="In service"
-        />
-        <StatCard 
-          title="Idle Buses" 
-          value={fleetStats.idleBuses.toString()}
-          icon={<Bus className="h-4 w-4 text-gray-600" />}
-          description="Standby"
-        />
-        <StatCard 
-          title="Utilization" 
-          value={`${fleetStats.fleetUtilization.toFixed(1)}%`}
-          icon={<BarChart className="h-4 w-4 text-green-600" />}
+          title="Avg Energy Usage" 
+          value={`${energyEfficiency.toFixed(2)} kWh/km`}
+          icon={<BatteryCharging className="h-4 w-4 text-green-600" />}
           description="Fleet efficiency"
         />
       </div>
@@ -128,32 +100,18 @@ const Index = () => {
       {/* Main Dashboard Content */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-6">
         <div className="lg:col-span-2 space-y-4">
-          {/* Live Map */}
-          {mapboxToken ? (
-            <div className="relative">
-              <LiveBusMap mapboxToken={mapboxToken} height="400px" />
-              <div className="absolute top-4 right-4">
-                <Link to="/map">
-                  <Button size="sm">
-                    <Map className="h-4 w-4 mr-1" />
-                    Full Map
-                  </Button>
-                </Link>
-              </div>
+          {/* Route Map (static) */}
+          <div className="relative">
+            <RouteMap />
+            <div className="absolute top-4 right-4">
+              <Link to="/map">
+                <Button size="sm">
+                  <Map className="h-4 w-4 mr-1" />
+                  Live Map
+                </Button>
+              </Link>
             </div>
-          ) : (
-            <div className="relative">
-              <RouteMap />
-              <div className="absolute top-4 right-4">
-                <Link to="/map">
-                  <Button size="sm">
-                    <Map className="h-4 w-4 mr-1" />
-                    Setup Live Map
-                  </Button>
-                </Link>
-              </div>
-            </div>
-          )}
+          </div>
           
           {/* Fleet Status */}
           <FleetStatusTable buses={liveBusData.slice(0, 8)} />
