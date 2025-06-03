@@ -9,7 +9,7 @@ interface BusData {
   id: string;
   name: string;
   batteryLevel: number;
-  status: 'charging' | 'discharging' | 'idle';
+  status: 'charging' | 'discharging' | 'idle' | 'maintenance';
   estimatedRange: number;
   type?: 'ac' | 'non-ac';
 }
@@ -33,6 +33,7 @@ export const BatteryStatusCard: React.FC<BatteryStatusCardProps> = ({ buses }) =
     switch (status) {
       case 'charging': return 'bg-eco-green-100 text-eco-green-800 border-eco-green-200';
       case 'discharging': return 'bg-eco-blue-100 text-eco-blue-800 border-eco-blue-200';
+      case 'maintenance': return 'bg-eco-orange-100 text-eco-orange-800 border-eco-orange-200';
       case 'idle': return 'bg-gray-100 text-gray-800 border-gray-200';
       default: return 'bg-gray-100 text-gray-800 border-gray-200';
     }
