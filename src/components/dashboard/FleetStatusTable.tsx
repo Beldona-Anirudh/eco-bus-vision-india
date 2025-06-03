@@ -40,6 +40,9 @@ export const FleetStatusTable: React.FC<FleetStatusTableProps> = ({ buses }) => 
     }
   };
 
+  // Safely check if any bus has type information
+  const hasTypeInfo = buses.length > 0 && buses.some(bus => bus.type !== undefined);
+
   return (
     <Card className="col-span-3">
       <CardHeader className="pb-2">
@@ -50,7 +53,7 @@ export const FleetStatusTable: React.FC<FleetStatusTableProps> = ({ buses }) => 
           <TableHeader>
             <TableRow>
               <TableHead>Bus ID</TableHead>
-              {buses[0].type && <TableHead>Type</TableHead>}
+              {hasTypeInfo && <TableHead>Type</TableHead>}
               <TableHead>Route</TableHead>
               <TableHead>Driver</TableHead>
               <TableHead>Status</TableHead>
@@ -62,7 +65,7 @@ export const FleetStatusTable: React.FC<FleetStatusTableProps> = ({ buses }) => 
             {buses.map((bus) => (
               <TableRow key={bus.id}>
                 <TableCell className="font-medium">{bus.id}</TableCell>
-                {bus.type && (
+                {hasTypeInfo && (
                   <TableCell>
                     <div className="flex items-center space-x-1">
                       {bus.type === 'ac' ? (
@@ -70,11 +73,13 @@ export const FleetStatusTable: React.FC<FleetStatusTableProps> = ({ buses }) => 
                           <AirVent className="h-4 w-4 text-eco-blue-600" />
                           <span>AC</span>
                         </>
-                      ) : (
+                      ) : bus.type === 'non-ac' ? (
                         <>
                           <ThermometerSnowflake className="h-4 w-4 text-eco-green-600" />
                           <span>Non-AC</span>
                         </>
+                      ) : (
+                        <span>-</span>
                       )}
                     </div>
                   </TableCell>

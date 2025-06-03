@@ -164,7 +164,7 @@ const Index = () => {
             id: bus.id,
             name: bus.name,
             batteryLevel: bus.batteryLevel,
-            status: bus.status,
+            status: bus.status === 'on-route' ? 'discharging' : bus.status,
             estimatedRange: bus.estimatedRange,
             type: bus.type
           }))} />
